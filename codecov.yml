@@ -1,0 +1,20 @@
+codecov:
+  notify:
+    after_n_builds: 3
+
+comment:
+  layout: reach, diff, flags, files, footer
+  require_changes: true
+
+coverage:
+  status:
+    project:
+      default:
+        target: 95%
+        paths:
+          - aoc
+    patch:
+      default:
+        target: 95%
+        paths:
+          - aoc
