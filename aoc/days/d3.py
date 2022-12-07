@@ -48,8 +48,6 @@ def batched(iterable: Iterable[V], size: int) -> Iterator[list[V]]:
     """
     # batched('ABCDEFG', 3) --> ABC DEF G
     # https://docs.python.org/3/library/itertools.html#itertools-recipes
-    if size < 1:
-        raise ValueError("n must be at least one")
     itr = iter(iterable)
     while batch := list(islice(itr, size)):
         yield batch
