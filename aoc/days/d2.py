@@ -28,27 +28,6 @@ from aoc.utils import Day, part
 __all__ = ("Day2",)
 
 
-P2_MAPPING: dict[
-    Literal["A", "B", "C"], dict[Literal["X", "Y", "Z"], Literal["X", "Y", "Z"]]
-] = {
-    "A": {
-        "Z": "Y",  # 3 2
-        "Y": "X",  # 2 1
-        "X": "Z",  # 1 3
-    },
-    "B": {
-        "Z": "Z",  # 3 3
-        "Y": "Y",  # 2 2
-        "X": "X",  # 1 1
-    },
-    "C": {
-        "Z": "X",  # 3 1
-        "Y": "Z",  # 2 3
-        "X": "Y",  # 1 2
-    },
-}
-
-
 def logic(value: str, p2_logic: bool = False) -> int:
     """Logic for both parts of the challenge. Takes the input and parses it, then
     returns the result.
@@ -75,6 +54,8 @@ def logic(value: str, p2_logic: bool = False) -> int:
                 r_val[0],
                 "XYZ"[("ABC".index(r_val[0]) + "XYZ".index(r_val[1]) - 1) % 3],
             )
+        if r_val in [("A", "X"), ("B", "Y"), ("C", "Z")]:
+            total += 3
         match r_val[1]:
             case "X":
                 total += 1
