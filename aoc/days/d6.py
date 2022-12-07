@@ -76,7 +76,7 @@ def logic(value: str, window_size: int) -> int:
     for i, win in window:
         if len(set(win)) == window_size:
             return i + window_size
-    raise ValueError("No valid window found")
+    raise ValueError("No valid window found")  # pragma: no cover
 
 
 class Day6(Day):

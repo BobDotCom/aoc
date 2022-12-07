@@ -27,7 +27,7 @@ def logic(value: str, part1: bool) -> str:
         # Parse the line with regex
         regex = re.compile(r"move (?P<amount>\d+) from (?P<from>\d+) to (?P<to>\d+)")
         match = regex.match(line)
-        if match is None:
+        if match is None:  # pragma: no cover
             raise ValueError(f"Invalid line: {line}")
         # Get the values from the match
         amount = int(match.group("amount"))

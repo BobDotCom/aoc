@@ -33,3 +33,13 @@ disable = [
 [tool.pylint.format]
 indent-string = '    '
 max-line-length = 120
+
+[tool.pytest.ini_options]
+addopts = "--cov=aoc --cov-branch --cov-report=xml --cov-report=term"
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+]

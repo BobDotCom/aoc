@@ -37,7 +37,8 @@ class Day:
     and to run the parts of the challenge.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, input_path: str = "inputs") -> None:
+        self.input_path = input_path
         for attr in dir(self):
             if hasattr((obj := getattr(self, attr)), "__part__"):
                 setattr(self, attr, obj.__part__(self))
@@ -56,8 +57,8 @@ class Day:
             The input for the day.
         """
         possible_paths = [
-            f"inputs/{self.get_date()}_{title}.txt",
-            f"inputs/{self.get_date()}.txt",
+            os.path.join(self.input_path, f"{self.get_date()}{title}.txt"),
+            os.path.join(self.input_path, f"{self.get_date()}.txt"),
         ]
         for val in possible_paths:
             path = os.path.join(os.path.dirname(__file__), val)
@@ -95,6 +96,24 @@ class Day:
             for attr in dir(self)
             if isinstance(getattr(self, attr), Part)
         ]
+
+    def run_part(self, title: str | int) -> Any:
+        """Run a specific part of the challenge.
+
+        Parameters
+        ----------
+        title: str | int
+            The title of the part to run.
+
+        Returns
+        -------
+        Any
+            The return value of the part.
+        """
+        for func in self.parts():
+            if func.title == title:
+                return func()
+        raise ValueError(f"Could not find part {title} for day {self.get_date()}")
 
     def run(self) -> None:
         """Run all parts of the challenge."""
