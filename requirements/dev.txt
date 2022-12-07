@@ -1,6 +1,6 @@
 pre-commit==2.20.0
 mypy==0.991
-pylint==2.15.8
+pylint==2.15.7
 flake8==6.0.0
 codespell==2.2.2
 bandit==1.7.4
