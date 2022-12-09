@@ -72,6 +72,7 @@ def expected(day, part, example):
             5: ["WCZTHTMPS", "BLSGJSDTS"],
             6: [1582, 3588],
             7: [1141028, 8278005],
+            8: [1543, 595080],
         }.get(day, [None] * 2)[part - 1]
     else:
         return {
@@ -82,6 +83,7 @@ def expected(day, part, example):
             5: ["CMZ", "MCD"],
             6: [7, 19],
             7: [95437, 24933642],
+            8: [21, 8],
         }.get(day, [None] * 2)[part - 1]
 
 
